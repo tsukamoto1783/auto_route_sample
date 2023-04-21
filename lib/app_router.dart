@@ -1,14 +1,24 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_route_sample/home_page.dart';
-import 'package:auto_route_sample/user_page.dart';
+import 'package:auto_route_sample/setting_page.dart';
+import 'package:flutter/material.dart';
 
 part 'app_router.gr.dart';
 
-@AutoRouterConfig()
+// replaceInRouteNameを指定することで、ジェネレート時に文字列を変換してくれる。
+// HomePage -> HomeRoute
+@AutoRouterConfig(replaceInRouteName: 'Page,Route')
 class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
+        // 以下のドキュメントの記載だとエラーになる。
+        // AutoRoute(HomeRoute.page),
+
+        // 以下のように修正
+        // initial: アプリ起動時の画面を設定しないと、"Can not resolve initial route"と怒られる。
+        // page: requiredの名前付きコンストラクタなので、page:の記載が必要。
         AutoRoute(page: HomeRoute.page, initial: true),
-        AutoRoute(page: UserRoute.page, path: "/user-page"),
+
+        AutoRoute(page: SettingRoute.page, path: "/setting-pate"),
       ];
 }

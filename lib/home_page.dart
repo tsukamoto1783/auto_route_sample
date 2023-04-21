@@ -10,15 +10,13 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Home Page',
-        ),
+        title: const Text('Home Page'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
+      body: Center(
         child: ElevatedButton(
-            child: const Text('UserPageへ'),
-            onPressed: () => context.router.navigate(const UserRoute())),
+            child: const Text('Setting Page'),
+            onPressed: () =>
+                context.router.push(SettingRoute(name: "Setting Page"))),
       ),
     );
   }

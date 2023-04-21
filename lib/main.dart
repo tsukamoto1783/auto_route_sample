@@ -7,17 +7,17 @@ void main() {
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
-  final _appRouter = AppRouter();
 
-  // This widget is the root of your application.
+  final _appRouter = AppRouter(); //追加
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      routerConfig: _appRouter.config(),
+      // routerを追加
+      routerConfig: _appRouter.config(), // 追加
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData(primarySwatch: Colors.blue),
+      // home: const HomePage(), // homeを削除
     );
   }
 }
