@@ -1,6 +1,10 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:auto_route_sample/dashboard.dart';
 import 'package:auto_route_sample/home_page.dart';
+import 'package:auto_route_sample/posts.dart';
 import 'package:auto_route_sample/setting_page.dart';
+import 'package:auto_route_sample/settings.dart';
+import 'package:auto_route_sample/users.dart';
 import 'package:flutter/material.dart';
 
 part 'app_router.gr.dart';
@@ -17,8 +21,26 @@ class AppRouter extends _$AppRouter {
         // 以下のように修正
         // initial: アプリ起動時の画面を設定しないと、"Can not resolve initial route"と怒られる。
         // page: requiredの名前付きコンストラクタなので、page:の記載が必要。
-        AutoRoute(page: HomeRoute.page, initial: true),
+        AutoRoute(
+          path: '/dashboardPage',
+          initial: true,
+          page: DashboardRoute.page,
+          children: [
+            AutoRoute(path: 'users', page: UsersRoute.page),
+            AutoRoute(path: 'posts', page: PostsRoute.page, initial: true),
+            AutoRoute(
+              path: 'settings',
+              page: SettingDefoRoute.page,
+              children: [
+                AutoRoute(initial: true, page: SettingsRoute.page),
+                AutoRoute(path: 'setting', page: HomeRoute.page),
+              ],
+            ),
+            // AutoRoute(path: 'setting', page: SettingRoute.page),
+          ],
+        ),
+        // AutoRoute(path: '/setting', page: SettingRoute.page),
 
-        AutoRoute(page: SettingRoute.page, path: "/setting-pate"),
+        // AutoRoute(path: '/login', page: LoginRoute.page),
       ];
 }
