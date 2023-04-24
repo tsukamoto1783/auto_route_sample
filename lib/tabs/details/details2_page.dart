@@ -3,25 +3,24 @@ import 'package:auto_route_sample/app_router.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
-class SettingsRouterPage extends AutoRouter {
-  const SettingsRouterPage({super.key});
-}
-
-@RoutePage()
-class SettingsPage extends StatelessWidget {
-  const SettingsPage({super.key});
+class Details2Page extends StatelessWidget {
+  const Details2Page({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings Page'),
-        backgroundColor: Colors.grey,
+        title: const Text('Details2 Page'),
+        backgroundColor: Colors.greenAccent,
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Container(
+              padding: const EdgeInsets.all(8.0),
+              child: const Text('Details 2 Page \n ネストされたPageです。'),
+            ),
             Container(
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
@@ -33,12 +32,6 @@ class SettingsPage extends StatelessWidget {
               child: ElevatedButton(
                   child: const Text('Details 2 Page'),
                   onPressed: () => context.router.push(const Details2Route())),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8.0),
-              child: ElevatedButton(
-                  child: const Text('Details 3 Page'),
-                  onPressed: () => context.router.push(const Details3Route())),
             ),
           ],
         ),

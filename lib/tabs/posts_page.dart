@@ -1,5 +1,11 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:auto_route_sample/app_router.dart';
 import 'package:flutter/material.dart';
+
+@RoutePage()
+class PostsRouterPage extends AutoRouter {
+  const PostsRouterPage({super.key});
+}
 
 @RoutePage()
 class PostsPage extends StatelessWidget {
@@ -15,7 +21,9 @@ class PostsPage extends StatelessWidget {
       body: Center(
         child: Container(
           padding: const EdgeInsets.all(8.0),
-          child: const Text('Posts Page'),
+          child: ElevatedButton(
+              child: const Text('Details Page'),
+              onPressed: () => context.router.push(const Details1Route())),
         ),
       ),
     );

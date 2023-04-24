@@ -15,6 +15,12 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    PostsRouterRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const PostsRouterPage(),
+      );
+    },
     PostsRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -45,13 +51,63 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const DashboardPage(),
       );
     },
-    DetailsRoute.name: (routeData) {
+    Details2Route.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const DetailsPage(),
+        child: const Details2Page(),
+      );
+    },
+    Details1Route.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const Details1Page(),
+      );
+    },
+    Details3Route.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const Details3Page(),
+      );
+    },
+    Stack1Route.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const Stack1Page(),
+      );
+    },
+    Stack2Route.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const Stack2Page(),
+      );
+    },
+    Stack4Route.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const Stack4Page(),
+      );
+    },
+    Stack3Route.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const Stack3Page(),
       );
     },
   };
+}
+
+/// generated route for
+/// [PostsRouterPage]
+class PostsRouterRoute extends PageRouteInfo<void> {
+  const PostsRouterRoute({List<PageRouteInfo>? children})
+      : super(
+          PostsRouterRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'PostsRouterRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -125,15 +181,99 @@ class DashboardRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [DetailsPage]
-class DetailsRoute extends PageRouteInfo<void> {
-  const DetailsRoute({List<PageRouteInfo>? children})
+/// [Details2Page]
+class Details2Route extends PageRouteInfo<void> {
+  const Details2Route({List<PageRouteInfo>? children})
       : super(
-          DetailsRoute.name,
+          Details2Route.name,
           initialChildren: children,
         );
 
-  static const String name = 'DetailsRoute';
+  static const String name = 'Details2Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [Details1Page]
+class Details1Route extends PageRouteInfo<void> {
+  const Details1Route({List<PageRouteInfo>? children})
+      : super(
+          Details1Route.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'Details1Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [Details3Page]
+class Details3Route extends PageRouteInfo<void> {
+  const Details3Route({List<PageRouteInfo>? children})
+      : super(
+          Details3Route.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'Details3Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [Stack1Page]
+class Stack1Route extends PageRouteInfo<void> {
+  const Stack1Route({List<PageRouteInfo>? children})
+      : super(
+          Stack1Route.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'Stack1Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [Stack2Page]
+class Stack2Route extends PageRouteInfo<void> {
+  const Stack2Route({List<PageRouteInfo>? children})
+      : super(
+          Stack2Route.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'Stack2Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [Stack4Page]
+class Stack4Route extends PageRouteInfo<void> {
+  const Stack4Route({List<PageRouteInfo>? children})
+      : super(
+          Stack4Route.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'Stack4Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [Stack3Page]
+class Stack3Route extends PageRouteInfo<void> {
+  const Stack3Route({List<PageRouteInfo>? children})
+      : super(
+          Stack3Route.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'Stack3Route';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

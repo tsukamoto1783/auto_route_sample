@@ -3,32 +3,32 @@ import 'package:auto_route_sample/app_router.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
-// class DashboardPage extends StatelessWidget {
-//   const DashboardPage({super.key});
+class DashboardPage extends StatelessWidget {
+  const DashboardPage({super.key});
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return AutoTabsScaffold(
-//       routes: const [
-//         HomeRoute(),
-//         PostsRoute(),
-//         SettingsRoute(),
-//       ],
-//       bottomNavigationBuilder: (_, tabsRouter) {
-//         return BottomNavigationBar(
-//           currentIndex: tabsRouter.activeIndex,
-//           onTap: tabsRouter.setActiveIndex,
-//           items: const [
-//             BottomNavigationBarItem(label: 'Users', icon: Icon(Icons.person)),
-//             BottomNavigationBarItem(label: 'Posts', icon: Icon(Icons.post_add)),
-//             BottomNavigationBarItem(
-//                 label: 'Settings', icon: Icon(Icons.settings)),
-//           ],
-//         );
-//       },
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return AutoTabsScaffold(
+      routes: const [
+        HomeRoute(),
+        PostsRoute(),
+        SettingsRoute(),
+      ],
+      bottomNavigationBuilder: (_, tabsRouter) {
+        return BottomNavigationBar(
+          currentIndex: tabsRouter.activeIndex,
+          onTap: tabsRouter.setActiveIndex,
+          items: const [
+            BottomNavigationBarItem(label: 'Users', icon: Icon(Icons.person)),
+            BottomNavigationBarItem(label: 'Posts', icon: Icon(Icons.post_add)),
+            BottomNavigationBarItem(
+                label: 'Settings', icon: Icon(Icons.settings)),
+          ],
+        );
+      },
+    );
+  }
+}
 
 // スタンダードパターン
 // class DashboardPage extends StatelessWidget {
@@ -110,48 +110,48 @@ import 'package:flutter/material.dart';
 // }
 
 // ヘッダー部分にタブバーを表示（tabBar）パターン
-class DashboardPage extends StatelessWidget {
-  const DashboardPage({super.key});
+// class DashboardPage extends StatelessWidget {
+//   const DashboardPage({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return AutoTabsRouter.tabBar(
-      routes: const [
-        HomeRoute(),
-        PostsRoute(),
-        SettingsRoute(),
-      ],
-      builder: (context, child, controller) {
-        final tabsRouter = AutoTabsRouter.of(context);
-        return Scaffold(
-          appBar: AppBar(
-            title: Text(context.topRoute.name),
-            leading: const AutoLeadingButton(),
-            bottom: TabBar(
-              controller: controller,
-              tabs: const [
-                Tab(text: 'Home', icon: Icon(Icons.home)),
-                Tab(text: 'Posts', icon: Icon(Icons.post_add)),
-                Tab(text: 'Settings', icon: Icon(Icons.settings)),
-              ],
-            ),
-          ),
-          body: child,
-          bottomNavigationBar: BottomNavigationBar(
-            currentIndex: tabsRouter.activeIndex,
-            onTap: (index) {
-              tabsRouter.setActiveIndex(index);
-            },
-            items: const [
-              BottomNavigationBarItem(label: 'Home', icon: Icon(Icons.home)),
-              BottomNavigationBarItem(
-                  label: 'Posts', icon: Icon(Icons.post_add)),
-              BottomNavigationBarItem(
-                  label: 'Settings', icon: Icon(Icons.settings)),
-            ],
-          ),
-        );
-      },
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return AutoTabsRouter.tabBar(
+//       routes: const [
+//         HomeRoute(),
+//         PostsRoute(),
+//         SettingsRoute(),
+//       ],
+//       builder: (context, child, controller) {
+//         final tabsRouter = AutoTabsRouter.of(context);
+//         return Scaffold(
+//           appBar: AppBar(
+//             title: Text(context.topRoute.name),
+//             leading: const AutoLeadingButton(),
+//             bottom: TabBar(
+//               controller: controller,
+//               tabs: const [
+//                 Tab(text: 'Home', icon: Icon(Icons.home)),
+//                 Tab(text: 'Posts', icon: Icon(Icons.post_add)),
+//                 Tab(text: 'Settings', icon: Icon(Icons.settings)),
+//               ],
+//             ),
+//           ),
+//           body: child,
+//           bottomNavigationBar: BottomNavigationBar(
+//             currentIndex: tabsRouter.activeIndex,
+//             onTap: (index) {
+//               tabsRouter.setActiveIndex(index);
+//             },
+//             items: const [
+//               BottomNavigationBarItem(label: 'Home', icon: Icon(Icons.home)),
+//               BottomNavigationBarItem(
+//                   label: 'Posts', icon: Icon(Icons.post_add)),
+//               BottomNavigationBarItem(
+//                   label: 'Settings', icon: Icon(Icons.settings)),
+//             ],
+//           ),
+//         );
+//       },
+//     );
+//   }
+// }
