@@ -24,23 +24,25 @@ class AppRouter extends _$AppRouter {
           page: DashboardRoute.page,
           children: [
             AutoRoute(path: 'home', page: HomeRoute.page, initial: true),
-            // AutoRoute(path: 'posts', page: PostsRoute.page),
-
-            // // ボトムナビゲージョンバーに設定したrouterに関して、AutoRouterかますのは、使い回しできない。
-            // AutoRoute(
-            //   path: 'posts',
-            //   page: PostsRouterRoute.page,
-            //   children: [
-            //     AutoRoute(initial: true, page: PostsRoute.page),
-            //     AutoRoute(path: 'details', page: Details1Route.page),
-            //   ],
-            // ),
+            AutoRoute(
+              path: 'posts',
+              // ボトムナビゲージョンバーに設定したrouterに関して、AutoRouterかますのは、使い回しできなそう。
+              // 以下だとエラーになる。
+              // page: SettingsRouterRoute.page,
+              page: PostsRouterRoute.page,
+              children: [
+                AutoRoute(initial: true, page: PostsRoute.page),
+                AutoRoute(path: 'details', page: Details1Route.page),
+              ],
+            ),
             AutoRoute(
               path: 'setting',
               page: SettingsRouterRoute.page,
               children: [
                 AutoRoute(initial: true, page: SettingsRoute.page),
                 AutoRoute(path: 'details-1', page: Details1Route.page),
+
+                // childrenでネストしていくパターン
                 AutoRoute(
                     path: 'details-2',
                     page: Details2Route.page,
@@ -48,6 +50,9 @@ class AppRouter extends _$AppRouter {
                       AutoRoute(path: 'details-1', page: Details1Route.page),
                       AutoRoute(path: 'details-2', page: Details2Route.page)
                     ]),
+
+                // path指定でネストしていくパターン
+                // どっちが可読性良くなるかは要検討。
                 AutoRoute(path: 'details-3', page: Details3Route.page),
                 AutoRoute(path: 'details-3/stack-1', page: Stack1Route.page),
                 AutoRoute(

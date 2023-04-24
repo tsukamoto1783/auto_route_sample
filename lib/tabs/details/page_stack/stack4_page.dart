@@ -10,13 +10,12 @@ class Stack4Page extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('スタックテスト 4 Page'),
+        title: const Text('スタックテスト 4枚目'),
         backgroundColor: Colors.blueGrey,
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('4枚目 Page'),
           Center(
             child: ElevatedButton(
                 child: const Text('Stackの1枚目へ戻る'),

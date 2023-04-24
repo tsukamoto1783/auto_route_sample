@@ -10,12 +10,12 @@ class Stack1Page extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('スタックテスト 1 Page'),
+        title: const Text('スタックテスト 1枚目'),
         backgroundColor: Colors.blueGrey,
       ),
       body: Center(
         child: ElevatedButton(
-            child: const Text('1枚目 Page'),
+            child: const Text('Next'),
             onPressed: () => context.router.push(const Stack2Route())),
       ),
     );
