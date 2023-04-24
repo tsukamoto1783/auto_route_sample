@@ -17,7 +17,28 @@ class DashboardPage extends StatelessWidget {
       bottomNavigationBuilder: (_, tabsRouter) {
         return BottomNavigationBar(
           currentIndex: tabsRouter.activeIndex,
-          onTap: tabsRouter.setActiveIndex,
+          onTap: (int index) {
+            if (tabsRouter.activeIndex != index) {
+              print("ifの中");
+              tabsRouter.setActiveIndex(index);
+            } else {
+              print("ifの外");
+              // Base画面の上にスタックされている画面を全て破棄したい
+              // BottomNavigationBarのタブをタップしても、スタックは乘っていない。
+              // これは、Base画面のスタック情報を参照するため。
+              // Base画面のスタック情報ではなく、Base画面の上に乘っている画面のスタック情報を破棄したい。
+              // どうすればいいのか？
+              // 現在アクティブなタブのルートコントローラを取得
+              // final activeRouter = tabsRouter.innerRouter;
+
+              // 現在アクティブなタブのルートコントローラを使って、スタックされている画面を全て破棄
+              // activeRouter.popUntilRoot();
+
+              print(context.router.stack);
+              print(context.router.current.name);
+              print(context.router.current.args);
+            }
+          },
           items: const [
             BottomNavigationBarItem(label: 'Users', icon: Icon(Icons.person)),
             BottomNavigationBarItem(label: 'Posts', icon: Icon(Icons.post_add)),
