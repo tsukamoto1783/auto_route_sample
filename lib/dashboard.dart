@@ -11,32 +11,68 @@ class DashboardPage extends StatelessWidget {
     return AutoTabsScaffold(
       routes: const [
         HomeRoute(),
-        PostsRoute(),
-        SettingsRoute(),
+        PostsRouterRoute(),
+        SettingsRouterRoute(),
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
         return BottomNavigationBar(
           currentIndex: tabsRouter.activeIndex,
           onTap: (int index) {
+            // 選択中じゃない別のタブをTapした時
             if (tabsRouter.activeIndex != index) {
-              print("ifの中");
               tabsRouter.setActiveIndex(index);
-            } else {
-              print("ifの外");
-              // Base画面の上にスタックされている画面を全て破棄したい
-              // BottomNavigationBarのタブをタップしても、スタックは乘っていない。
-              // これは、Base画面のスタック情報を参照するため。
-              // Base画面のスタック情報ではなく、Base画面の上に乘っている画面のスタック情報を破棄したい。
-              // どうすればいいのか？
-              // 現在アクティブなタブのルートコントローラを取得
-              // final activeRouter = tabsRouter.innerRouter;
+            }
+            // 選択中のタブをTapした場合
+            else {
+              // 子ルーターのスタック情報を破棄
+              tabsRouter
+                  .innerRouterOf<StackRouter>(tabsRouter.current.name)
+                  ?.popUntilRoot();
 
-              // 現在アクティブなタブのルートコントローラを使って、スタックされている画面を全て破棄
-              // activeRouter.popUntilRoot();
+              /// NOTE: StackRouterクラスやTabsRouterクラスは、RoutingControllerクラスをextendsしてる
+              // OK)
+              // tabsRouter
+              //     .innerRouterOf<StackRouter>(tabsRouter.current.name)
+              //     ?.popUntilRoot();
 
+              // error) RoutingControllerクラスにはpopUntilRoot()は無いと怒られる。
+              // tabsRouter
+              //     .innerRouterOf(tabsRouter.current.name)
+              //     ?.popUntilRoot();
+
+              // error) TabsRouterクラスにはpopUntilRoot()は無いと怒られる。
+              // tabsRouter
+              //     .innerRouterOf<TabsRouter>(tabsRouter.current.name)
+              //     ?.popUntilRoot();
+
+              // error) 一見同じ処理をしてそうだけど、型がRoutingControllerなのでpopUntilRoot()は無いと怒られる。
+              // innerRouterOf:    T? innerRouterOf<T extends RoutingController>(String routeName) {
+              // childControllers: List<RoutingController> get childControllers => _childControllers;
+              // tabsRouter.childControllers[index].popUntilRoot();
+
+              // ============== メモ ==================
+              // context.routerは、操作してる画面のルーター情報を取得できる。
+              // ここだと、context.routerは、DashboardPageのルーター情報のみ。
+              debugPrint('========== context.router ===========');
+              print(context.router.childControllers);
               print(context.router.stack);
               print(context.router.current.name);
-              print(context.router.current.args);
+              print(context.router.parent());
+
+              // tabsRouterは、現在のタブのルーター情報を取得できる。
+              // AutoTabsScaffold内でのみtabsRouterは使用できるので、各タブのルーター情報を取得できる。
+              // childControllersも、innerRouterOfも、ルーター情報を取得できる。
+              // スタック操作をする場合はinnerRouterOfを使う。innerRouterOfだとStackRouter型を指定できるため。
+              debugPrint('========== tabsRouter.childControllers ===========');
+              print(tabsRouter.childControllers);
+              print(tabsRouter.childControllers[1].stack);
+              print(tabsRouter.childControllers[1]);
+              print(tabsRouter.childControllers[1].parent());
+
+              debugPrint('========== tabsRouter.innerRouterOf ===========');
+              print(tabsRouter.innerRouterOf(SettingsRouterRoute.name)?.stack);
+              print(tabsRouter.innerRouterOf(SettingsRouterRoute.name));
+              print(tabsRouter.parent());
             }
           },
           items: const [

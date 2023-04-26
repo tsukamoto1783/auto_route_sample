@@ -18,12 +18,11 @@ class Stack3Page extends StatelessWidget {
             child: const Text('Next'),
             onPressed: () {
               print(context.router.stack);
+              print(context.router.root);
 
-              // prints current route name
-              print(context.router.current.name);
-
-              // prints current route arguments
-              print(context.router.current.args);
+              // print(context.router.parent<StackRouter>());
+              print(context.router.parent<TabsRouter>());
+              print(context.router.parent());
 
               context.router.push(const Stack4Route());
             }),
